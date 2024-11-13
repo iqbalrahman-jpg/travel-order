@@ -6,7 +6,6 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import PrivateRoute from "../components/PrivateRoute";
 import Home from "../pages/Home";
 import Product from "../pages/Product";
 import Order from "../pages/Order";
@@ -16,17 +15,10 @@ const AppRoutes: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/*" element={<Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={<Home />} />
-        <Route path="/*" element={<Home />} />
         <Route path="/product" element={<Product />} />
-        <Route
-          path="/order"
-          element={
-            <PrivateRoute>
-              <Order />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/order" element={<Order />} />
         {/* <Route path="/product" element={<Product />} />
         <Route path="/login" element={<Login />} /> */}
       </Routes>
